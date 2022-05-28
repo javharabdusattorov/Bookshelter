@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookshelter</title>
+    <link rel="stylesheet" href="all.min/all.min.css">
+    <link rel="stylesheet" href="bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- HEADER navbar -->
+    <header class="header container-fluid sticky-top bg">
+        <div class="header-top row">
+            <div class="header__icon col-lg-3">
+                <img src="img/icon.png" alt="IMG not a found">
+            </div>
+            <div class="header__search col-lg-6 position-relative">
+                <input type="search" class="header__form-search" placeholder="Search box">
+                <i class="fal fa-search header__search-icon"></i>
+            </div>
+            <div class="header__logout col-lg-3 text-center">
+                <!-- <button><i class="fas fa-sun header__logout-icon"></i></button> -->
+                <button class="logout">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="container-fluid">
+        <div class="header-bottom row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6 d-flex align-items-center">
+                <p class="header__bottom-result">Showing 0 Result(s)</p>
+            </div>
+            <div class="col-lg-3 text-end">
+                <button type="button" class="header__bottom-newest"> 📅 Order by newest </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN section-->
+    <main class="container-fluid none hidden">
+        <div class="row">
+
+            <!-- BOOKMARK -->
+            <div class="col-lg-3 bookmars">
+                <h4 class="bookmarks__head-title">Bookmarks</h4>
+                <p class="bookmarks__head-text">If you don’t like to read, you haven’t found the right book</p>
+
+                <div class="bookmarks__list mt-3"> </div>
+            </div>
+
+            <!-- BOOKS -->
+            <div class="col-lg-9 result-books">
+                <div class="container-fluid">
+                    <div class="row justify-content-between books">
+
+                        <!-- Books item -->
+
+                    </div>
+
+                    <div class="paginations d-flex justify-content-center align-items-center mt-5">
+                        <button onclick="goToPrev(event)" class="prev__btn btn btn-light"><i class="fas fa-chevron-left"></i></button>
+                        <div class="pagination d-flex align-items-center">
+                            <!-- Pagination item -->
+                        </div>
+                        <button onclick="goToNext(event)" class="next__btn btn btn-light ms-2"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+
+    <!-- OFFCANVAS -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h4 class="info__title"></h4>
+            <button class="close__info" data-bs-dismiss="offcanvas" aria-label="Close">
+                <i class="far fa-times"></i>
+            </button>
+        </div>
+
+        <div class="offcanvas-body">
+            <div class="offcanvas__body-top py-4 px-3">
+                <div class="offcanvas__image d-flex justify-content-center">
+                    <img src=""></img>
+                </div>
+                <p class="info__description mt-4"></p>
+            </div>
+
+            <div class="ofcanvas__body-btns py-4 px-3 mt-2">
+
+                <div class="d-flex align-items-center">
+                    <h5>Author:</h5>
+                    <button class="info__author-name"></button>
+                    <button class="info__author-btn"></button>
+                </div>
+                <div class="d-flex align-items-center mt-3">
+                    <h5>Published:</h5>
+                    <button class="info__year"></button>
+                </div>
+                <div class="d-flex align-items-center mt-3">
+                    <h5>Publishers:</h5>
+                    <button class="info__publishers"></button>
+                </div>
+                <div class="d-flex align-items-center mt-3">
+                    <h5>Categories:</h5>
+                    <button class="info__categories"></button>
+                </div>
+                <div class="d-flex align-items-center mt-3">
+                    <h5>Pages Count:</h5>
+                    <button class="info__page-count"></button>
+                </div>
+            </div>
+        </div>
+        <div class="offcanvas__body-bottom d-flex justify-content-end mt-2 w-100">
+            <a target="_blank" class="offcanvas__read btn btn-secondary">Read</a>
+        </div>
+    </div>
+
+    <!-- ERROR modal -->
+    <div class="error" id="liveToastBtn">
+        <div class="position-fixed top-0 end-0 p-4" style="z-index: 110">
+            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header p-3">
+                    <strong class="me-auto">Xato!</strong>
+                    <button type="button" data-bs-dismiss="toast" aria-label="Close"><i
+                            class="far fa-times"></i></button>
+                </div>
+                <div class="toast-body p-3">
+                    Kechirasiz bizda bunday kitob topilmadi!!!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOADER... -->
+    <div class="loader__container">
+        <div class="loader">
+            <img src="img/loader.gif" alt="">
+        </div>
+    </div>
+
+    
+    <script src="bootstrap/bootstrap.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/variables.js"></script>
+    <script src="js/loader.js"></script>
+    <script src="js/books.js"></script>
+    <script src="js/book-details.js"></script>
+    <script src="js/bookmark.js"></script>
+
+</body>
+
+</html>
