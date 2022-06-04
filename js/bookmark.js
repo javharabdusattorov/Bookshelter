@@ -5,6 +5,7 @@ function bookmarkFetch(evt) {
     
     if(!isBookLiked(allBooks[index])) {
         bookmark.push(allBooks[index]);
+        console.log(bookmark);
     }
     
     localData()

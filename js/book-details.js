@@ -14,14 +14,14 @@ function renderBookInfo() {
 }
 
 // // function of FETCH
-function infoFetch(evt) {
+async function infoFetch(evt) {
     const element = $(evt.target);
     const index = element.parent().parent().parent().attr('data-id');
     
-    fetch(`${API_URL}/books/v1/volumes?q=${allBooks[index].id}`)
-        .then(res => res.json())
-        .then(info => {
-            bookInfo = info.items[0];
-            renderBookInfo()
-    })
+    const response = await fetch(`${API_URL}/books/v1/volumes?q=${allBooks[index].id}`);
+    const responseJSON = await response.json();
+    console.log(responseJSON);
+
+    bookInfo = responseJSON.items[0];
+    renderBookInfo()
 }

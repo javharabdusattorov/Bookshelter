@@ -12,23 +12,22 @@ elInput.keyup(function(evt) {
 
 // function of FETCH
 searchFetch()
-function searchFetch() {
+async function searchFetch() {
     startLoader()
-    fetch(`${API_URL}/books/v1/volumes?q=${search}&startIndex=${pagination.startIndex}&orderBy=${order}`)
-    .then((res) => res.json())
-    .then((detail) => {
-      allBooks = detail.items || [];
-      $('.header__bottom-result').text(`Showing ${detail.totalItems} Result(s)`);
-      endLoader()
-      
-      if (!detail.items) {
-        reflash()
-      }
+    const response = await fetch(`${API_URL}/books/v1/volumes?q=${search}&startIndex=${pagination.startIndex}&orderBy=${order}`);
+    const responseJSON = await response.json();
 
-      renderBooks()
-      calculatePagination(detail.totalItems)
-      renderPagination()
-    });
+    allBooks = responseJSON.items || [];
+    $('.header__bottom-result').text(`Showing ${responseJSON.totalItems} Result(s)`);
+    endLoader()
+      
+    if (!responseJSON.items) {
+      reflash()
+    }
+
+    renderBooks()
+    calculatePagination(responseJSON.totalItems)
+    renderPagination()
 }
 
 // function of Default book/Newest book
